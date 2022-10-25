@@ -7,6 +7,11 @@ Date: October 25, 2022
 
 console.log("app script is working.");
 
+const signOutLink = document.querySelector("#signout");
+if (signOutLink) {
+  signOutLink.addEventListener("click", () => confirm("Are you sure?"));
+}
+
 if (getTitle == "To-Do List") {
   let deleteButtons = document.querySelectorAll(".btn-danger");
 

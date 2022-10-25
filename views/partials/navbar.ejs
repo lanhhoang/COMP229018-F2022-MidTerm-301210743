@@ -1,0 +1,45 @@
+<!-- Main Nav bar  -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo.jpg" alt="logo" width="36" height="36" class="d-inline-block align-text-center">
+      To-Do App
+    </a>
+    <div>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <% if (title == "Home") { %>
+            <a class="nav-link active" href="/">
+          <% } else { %>
+            <a class="nav-link" href="/">
+          <% } %>            
+            <i class="fas fa-home"></i> Home
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <% if (title == "To-Do List" || title == "Add a new Todo") { %>
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-list"></i> To-Do</a>
+          <% } else { %>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-list"></i> To-Do</a>
+          <% } %>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/todo/list"><i class="fa-solid fa-list"></i> To-Do List</a></li>
+            <li><a class="dropdown-item" href="/todo/add"><i class="fa-solid fa-circle-plus"></i> Add a new Todo</a></li>
+          </ul>
+        </li>
+        <% if (typeof username == "string" && username) { %>
+          <li class="nav-item">
+            <a class="nav-link" id="signout" href="/users/signout"><i class="fa-solid fa-door-open"></i> Sign Out (<%= username %>)</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/signin"><i class="fa-solid fa-door-closed"></i> Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
