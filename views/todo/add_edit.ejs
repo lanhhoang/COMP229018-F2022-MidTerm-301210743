@@ -43,8 +43,8 @@
               id="completeTextField"
               name="complete"
               value="<%= todo.complete %>"
+              <%= todo.complete == true ? "checked" : "" %>
             />
-            <%= todo.complete == true ? "checked" : "" %>
           </div>
 
           <br />

@@ -45,6 +45,23 @@ module.exports.details = (req, res, next) => {
 // Gets a todo by id and renders the Edit form using the add_edit.ejs template
 module.exports.displayEditPage = (req, res, next) => {
   // ADD YOUR CODE HERE
+  const id = req.params.id;
+
+  TodoModel.findById(id, null, {}, (err, todo) => {
+    // If document is not exist, "err" and "todo" are null
+    if (!todo) {
+      console.error(err);
+      res.render("404", { title: "404 Not Found" });
+    } else {
+      // show the edit view
+      res.render("todo/add_edit", {
+        title: "Edit To-Do",
+        todo: todo,
+        username: req.user ? req.user.username : "",
+        messages: req.flash("error") || req.flash("info"),
+      });
+    }
+  });
 };
 
 // Processes the data submitted from the Edit form to update a todo
@@ -61,6 +78,28 @@ module.exports.processEditPage = (req, res, next) => {
   });
 
   // ADD YOUR CODE HERE
+  TodoModel.updateOne(
+    { _id: id },
+    updatedTodo,
+    { runValidators: true },
+    (err) => {
+      if (err) {
+        console.error(err);
+        const message = getErrorMessage(err);
+        req.flash("error", message);
+
+        res.render("todo/add_edit", {
+          title: "Edit To-Do",
+          todo: updatedTodo,
+          username: req.user ? req.user.username : "",
+          messages: req.flash("error"),
+        });
+      } else {
+        // refresh the todo list
+        res.redirect("/todo/list");
+      }
+    }
+  );
 };
 
 // Deletes a todo based on its id.
