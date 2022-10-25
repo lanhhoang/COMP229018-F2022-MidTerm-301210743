@@ -70,7 +70,14 @@ module.exports.performDelete = (req, res, next) => {
 
 // Renders the Add form using the add_edit.ejs template
 module.exports.displayAddPage = (req, res, next) => {
-  // ADD YOUR CODE HERE
+  const newTodo = TodoModel();
+
+  res.render("todo/add_edit", {
+    title: "Add New To-Do",
+    todo: newTodo,
+    username: req.user ? req.user.username : "",
+    messages: req.flash("error") || req.flash("info"),
+  });
 };
 
 // Processes the data submitted from the Add form to create a new todo
@@ -85,4 +92,22 @@ module.exports.processAddPage = (req, res, next) => {
   });
 
   // ADD YOUR CODE HERE
+  TodoModel.create(newTodo, (err, todo) => {
+    if (err) {
+      console.error(err);
+      const message = getErrorMessage(err);
+      req.flash("error", message);
+
+      res.render("todo/add_edit", {
+        title: "Add New To-Do",
+        todo: newTodo,
+        username: req.user ? req.user.username : "",
+        messages: req.flash("error"),
+      });
+    } else {
+      // refresh the todo list
+      console.log(todo);
+      res.redirect("/todo/list");
+    }
+  });
 };
