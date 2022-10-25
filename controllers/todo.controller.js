@@ -105,6 +105,17 @@ module.exports.processEditPage = (req, res, next) => {
 // Deletes a todo based on its id.
 module.exports.performDelete = (req, res, next) => {
   // ADD YOUR CODE HERE
+  const id = req.params.id;
+
+  TodoModel.remove({ _id: id }, (err) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    } else {
+      // refresh the todo list
+      res.redirect("/todo/list");
+    }
+  });
 };
 
 // Renders the Add form using the add_edit.ejs template
