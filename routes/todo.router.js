@@ -14,6 +14,11 @@ let todoController = require("../controllers/todo.controller");
 function requireAuth(req, res, next) {
   // check if the user is logged in
   // ADD YOUR CODE HERE
+  if (!req.isAuthenticated()) {
+    req.session.url = req.originalUrl;
+    return res.redirect("/users/signin");
+  }
+  next();
 }
 
 /* GET list of items */
