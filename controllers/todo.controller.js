@@ -18,7 +18,7 @@ module.exports.todoList = function (req, res, next) {
       res.render("todo/list", {
         title: "To-Do List",
         TodoList: todoList,
-        userName: req.user ? req.user.username : "",
+        username: req.user ? req.user.username : "",
       });
     }
   });
