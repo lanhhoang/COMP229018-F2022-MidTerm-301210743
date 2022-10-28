@@ -3,6 +3,7 @@ File name: models/user.model.js
 Student name: Cong Lanh Hoang
 Student ID: 301210743
 Date: October 25, 2022
+Wev App: To-Do List
 */
 
 let mongoose = require("mongoose");
