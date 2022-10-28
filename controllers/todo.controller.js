@@ -3,7 +3,7 @@ File name: controllers/todo.controller.js
 Student name: Cong Lanh Hoang
 Student ID: 301210743
 Date: October 25, 2022
-Wev App: To-Do List
+Web App: To-Do List
 */
 
 // create a reference to the model

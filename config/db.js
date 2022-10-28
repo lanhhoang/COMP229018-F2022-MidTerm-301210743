@@ -3,7 +3,7 @@ File name: config/db.js
 Student name: Cong Lanh Hoang
 Student ID: 301210743
 Date: October 25, 2022
-Wev App: To-Do List
+Web App: To-Do List
 */
 
 // Do not expose your credentials in your code.

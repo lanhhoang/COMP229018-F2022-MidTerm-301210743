@@ -3,7 +3,7 @@ File name: helpers/getErrorMessage.js
 Student name: Cong Lanh Hoang
 Student ID: 301210743
 Date: October 20, 2022
-Wev App: To-Do List
+Web App: To-Do List
 */
 
 // helper function for generating error message

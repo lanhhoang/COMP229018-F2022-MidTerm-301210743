@@ -3,7 +3,7 @@ File name: config/passport.js
 Student name: Cong Lanh Hoang
 Student ID: 301210743
 Date: October 25, 2022
-Wev App: To-Do List
+Web App: To-Do List
 */
 
 const passport = require("passport");
